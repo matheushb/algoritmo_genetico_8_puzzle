@@ -2,15 +2,17 @@
 import random
 import matplotlib.pyplot as plt
 
-# Numero de rainhas (tamanho tabuleiro) e seed para o random
 N = 9
-SEED = 99
 MIRROR = [
     1, 2, 3, 
     8, 0, 4, 
     7, 6, 5
-    ]
-random.seed(SEED)
+]
+
+def start_algorith(SEED = 1, tamanho_populacao = 100, geracoes = 1000 ):
+    random.seed(SEED)
+    algoritmo_genetico(tamanho_populacao, geracoes)
+
 
 # Gerando um individuo aleatorio
 def criar_individuo():
@@ -46,7 +48,6 @@ def mutacao(individuo, taxa_mutacao=0.1):
 def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
     populacao = [criar_individuo() for _ in range(tamanho_populacao)]
     historico_fitness = []
-    print(populacao)
     
     for geracao in range(geracoes):
         melhor_individuo = min(populacao, key=lambda ind: calcular_fitness(ind))
@@ -54,7 +55,7 @@ def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
         historico_fitness.append(melhor_fitness)
 
         if melhor_fitness == 0:
-            print(f"Solução encontrada na geração {geracao}: {melhor_individuo}")
+            print(f"População: {tamanho_populacao} Gerações: {geracoes} Solução encontrada na geração {geracao}: {melhor_individuo}")
             break
 
         nova_populacao = selecao(populacao)
@@ -67,16 +68,13 @@ def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
 
         populacao = nova_populacao
 
-    # Plotando o gráfico de fitness ao longo das gerações
-    plt.plot(historico_fitness)
-    plt.title('Evolução do Fitness ao Longo das Gerações')
-    plt.xlabel('Geração')
-    plt.ylabel('Fitness (Menor é melhor)')
-    plt.show()
-
+    if melhor_fitness != 0:
+        print(f"População: {tamanho_populacao} Gerações: {geracoes} Solução não encontrada {geracao}: {melhor_individuo}")
+        
     return melhor_individuo
 
-# Executar o algoritmo
-solucao = algoritmo_genetico()
-
-print("Solucao: ",solucao)
+solucao = start_algorith(30, 100, 1000)
+solucao2 = start_algorith(22,10, 10)
+solucao3 = start_algorith(1, 10, 100)
+solucao4 = start_algorith(67,9, 567)
+solucao5 = start_algorith(99,18, 200)
