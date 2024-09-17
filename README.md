@@ -11,11 +11,11 @@ O código implementa uma abordagem de **Algoritmo Genético (AG)** para resolver
 #### Indivíduo:
 
 Um indivíduo é representado como uma lista de 9 números que corresponde à configuração atual do tabuleiro do 8 Puzzle.  
-A função `criar_individuo` gera um indivíduo aleatoriamente, que representa uma possível solução para o problema.
+A função `criar_individuo` gera um indivíduo aleatoriamente com numeros de 0 a 8 únicos, que representa uma possível solução para o problema.
 
 #### Função Fitness:
 
-A função `calcular_fitness` avalia a qualidade de cada indivíduo, calculando o número de conflitos, ou seja, a diferença absoluta entre a posição atual e a posição desejada de cada peça.  
+A função `calcular_fitness` avalia a qualidade de cada indivíduo, calculando o número de conflitos, ou seja, a diferença absoluta entre a posição atual e a posição desejada de cada peça, baseada no MIRROR.  
 O **fitness** serve como métrica para guiar o processo de evolução do AG. Quanto menor o valor do fitness, melhor a solução.
 
 #### Seleção:
