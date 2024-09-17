@@ -35,6 +35,17 @@ A função `mutacao` modifica um gene aleatório de um indivíduo com uma pequen
 A função `algoritmo_genetico` gera uma população inicial, avalia o fitness dos indivíduos, realiza seleção, crossover e mutação até encontrar uma solução com fitness zero (ou uma solução próxima). A solução é encontrada quando o tabuleiro está perfeitamente ordenado.
 O histórico de fitness ao longo das gerações é retornado para análise.
 
+### Variações de Parâmetros Utilizados:
+
+Para experimentar diferentes configurações e observar a evolução do fitness ao longo das gerações, o algoritmo foi executado com várias combinações de parâmetros:
+
+- Execução 1: SEED = 30, Tamanho da População = 100, Gerações = 50, Taxa de Mutação = 0.1
+- Execução 2: SEED = 30, Tamanho da População = 100, Gerações = 50, Taxa de Mutação = 0.25
+- Execução 3: SEED = 22, Tamanho da População = 10, Gerações = 300, Taxa de Mutação = 0.15
+- Execução 4: SEED = 22, Tamanho da População = 10, Gerações = 300, Taxa de Mutação = 0.3
+- Execução 5: SEED = 1, Tamanho da População = 1000, Gerações = 20, Taxa de Mutação = 0.15
+- Execução 6: SEED = 1, Tamanho da População = 1000, Gerações = 20, Taxa de Mutação = 0.3
+
 ### Visualização dos Resultados:
 
 O código gera gráficos que mostram a evolução do fitness ao longo das gerações. Cada gráfico representa a execução de diferentes parâmetros do algoritmo (como tamanho da população, taxa de mutação e número de gerações). Após o fechamento de um gráfico, o próximo é exibido.
