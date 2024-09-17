@@ -9,9 +9,9 @@ MIRROR = [
     7, 6, 5
 ]
 
-def start_algorith(SEED = 1, tamanho_populacao = 100, geracoes = 1000 ):
+def start_algorith(SEED = 1, tamanho_populacao = 100, geracoes = 1000, taxa_mutacao = 0.1 ):
     random.seed(SEED)
-    algoritmo_genetico(tamanho_populacao, geracoes)
+    algoritmo_genetico(taxa_mutacao, tamanho_populacao, geracoes)
 
 
 # Gerando um individuo aleatorio
@@ -45,7 +45,7 @@ def mutacao(individuo, taxa_mutacao=0.1):
     return individuo
 
 # execucao do AG
-def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
+def algoritmo_genetico(taxa_mutacao, tamanho_populacao=100, geracoes=1000 ):
     populacao = [criar_individuo() for _ in range(tamanho_populacao)]
     historico_fitness = []
     
@@ -63,7 +63,7 @@ def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
         while len(nova_populacao) < tamanho_populacao:
             pai1, pai2 = random.sample(nova_populacao, 2)
             filho = crossover(pai1, pai2)
-            filho = mutacao(filho)
+            filho = mutacao(filho, taxa_mutacao)
             nova_populacao.append(filho)
 
         populacao = nova_populacao
@@ -73,8 +73,8 @@ def algoritmo_genetico(tamanho_populacao=100, geracoes=1000):
         
     return melhor_individuo
 
-solucao = start_algorith(30, 100, 1000)
-solucao2 = start_algorith(22,10, 10)
-solucao3 = start_algorith(1, 10, 100)
-solucao4 = start_algorith(67,9, 567)
-solucao5 = start_algorith(99,18, 200)
+start_algorith(30, 100, 50, 0.1)
+start_algorith(30, 100, 50, 0.25)
+start_algorith(22, 10, 300, 0.15)
+start_algorith(22, 10, 300, 0.6) 
+start_algorith(1, 1000, 20, 0.3)
