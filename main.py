@@ -11,7 +11,7 @@ MIRROR = [
 
 def start_algorith(SEED = 1, tamanho_populacao = 100, geracoes = 1000, taxa_mutacao = 0.1 ):
     random.seed(SEED)
-    algoritmo_genetico(taxa_mutacao, tamanho_populacao, geracoes)
+    return algoritmo_genetico(taxa_mutacao, tamanho_populacao, geracoes)
 
 
 # Gerando um individuo aleatorio
@@ -45,7 +45,7 @@ def mutacao(individuo, taxa_mutacao=0.1):
     return individuo
 
 # execucao do AG
-def algoritmo_genetico(taxa_mutacao, tamanho_populacao=100, geracoes=1000 ):
+def algoritmo_genetico(taxa_mutacao, tamanho_populacao, geracoes ):
     populacao = [criar_individuo() for _ in range(tamanho_populacao)]
     historico_fitness = []
     
@@ -71,10 +71,24 @@ def algoritmo_genetico(taxa_mutacao, tamanho_populacao=100, geracoes=1000 ):
     if melhor_fitness != 0:
         print(f"População: {tamanho_populacao} Gerações: {geracoes} Solução não encontrada {geracao}: {melhor_individuo}")
         
-    return melhor_individuo
+    return historico_fitness
 
-start_algorith(30, 100, 50, 0.1)
-start_algorith(30, 100, 50, 0.25)
-start_algorith(22, 10, 300, 0.15)
-start_algorith(22, 10, 300, 0.6) 
-start_algorith(1, 1000, 20, 0.3)
+results = []
+
+results.append(start_algorith(30, 100, 50, 0.1))
+results.append(start_algorith(30, 100, 50, 0.25))
+results.append(start_algorith(22, 10, 300, 0.15))
+results.append(start_algorith(22, 10, 300, 0.3)) 
+results.append(start_algorith(1, 1000, 20, 0.15))
+results.append(start_algorith(1, 1000, 20, 0.3))
+
+
+for i, result in enumerate(results):
+    plt.figure()  
+    plt.plot(result)
+    plt.title(f'Evolução do Fitness ao Longo das Gerações (Resultado {i+1})')
+    plt.xlabel('Geração')
+    plt.ylabel('Fitness (Menor é melhor)')
+    plt.grid(True)
+    plt.show()
+
